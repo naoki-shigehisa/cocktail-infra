@@ -1,0 +1,8 @@
+aws_access_key    = ""
+aws_secret_key    = ""
+aws_account_id    = ""
+database_name     = ""
+database_username = ""
+database_password = ""
+host_domain_name  = ""
+domain_name       = ""
