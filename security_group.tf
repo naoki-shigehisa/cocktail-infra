@@ -72,3 +72,35 @@ resource "aws_security_group" "cocktail_sg_db" {
     Name = "${var.r_prefix}-sg-db"
   }
 }
+
+# ec2用
+resource "aws_security_group" "cocktail_sg_ec2" {
+  name        = "${var.r_prefix}-sg-ec2"
+  description = "${var.r_prefix}-sg-ec2"
+  vpc_id      = "${aws_vpc.cocktail_vpc.id}"
+
+  ingress {
+    from_port = 22
+    to_port = 22
+    protocol = "tcp"
+    cidr_blocks = ["${var.my_ip}"]
+  }
+
+  ingress {
+    from_port = 80
+    to_port = 80
+    protocol = "tcp"
+    cidr_blocks = ["${var.my_ip}"]
+  }
+
+  egress {
+    from_port = 0
+    to_port = 0
+    protocol = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+  
+  tags = {
+    Name = "${var.r_prefix}-sg-ec2"
+  }
+}
