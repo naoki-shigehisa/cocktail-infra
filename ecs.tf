@@ -8,8 +8,8 @@ resource "aws_ecs_task_definition" "cocktail_api_nginx" {
   network_mode             = "awsvpc" # Fargateを使う場合は「awsvpc」で固定
   task_role_arn            = "arn:aws:iam::${var.aws_account_id}:role/ecsTaskExecutionRole"
   execution_role_arn       = "arn:aws:iam::${var.aws_account_id}:role/ecsTaskExecutionRole"
-  cpu                      = 512
-  memory                   = 1024
+  cpu                      = 256
+  memory                   = 512
   container_definitions    = "${file("./task-definitions/app-nginx.json")}"
 }
 
