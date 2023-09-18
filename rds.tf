@@ -24,6 +24,9 @@ resource "aws_db_instance" "cocktail_db" {
   port                = 3306
   multi_az            = false
   skip_final_snapshot = true
+  backup_retention_period = 7
+  backup_window = "00:00-01:00"
+  apply_immediately = true
 
   vpc_security_group_ids = [aws_security_group.cocktail_sg_db.id]
   db_subnet_group_name   = "${aws_db_subnet_group.cocktail_db_subnet_group.name}"
